@@ -1,0 +1,12 @@
+{
+  "framework": "vite",
+  "installCommand": "cd equora-pay-sync-main && npm install",
+  "buildCommand": "cd equora-pay-sync-main && npm run build",
+  "outputDirectory": "equora-pay-sync-main/dist",
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}
