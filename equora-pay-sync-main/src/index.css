@@ -1,0 +1,160 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --bg: #0b0b0b;
+    --card-base: #121212;
+    --gold: #d4af37;
+    --gold-soft: #f5d76e;
+    --text: #eaeaea;
+    --muted-text: #888888;
+
+    --background: 0 0% 4%;
+    --foreground: 0 0% 95%;
+
+    --card: 0 0% 7%;
+    --card-foreground: 0 0% 95%;
+
+    --popover: 0 0% 7%;
+    --popover-foreground: 0 0% 95%;
+
+    --primary: 43 72% 52%;
+    --primary-foreground: 0 0% 4%;
+
+    --secondary: 43 85% 72%;
+    --secondary-foreground: 0 0% 4%;
+
+    --muted: 0 0% 12%;
+    --muted-foreground: 0 0% 55%;
+
+    --accent: 43 85% 72%;
+    --accent-foreground: 0 0% 4%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 95%;
+
+    --border: 43 30% 18%;
+    --input: 0 0% 14%;
+    --ring: 43 72% 52%;
+
+    --radius: 14px;
+
+    --sidebar-background: 0 0% 5%;
+    --sidebar-foreground: 0 0% 70%;
+    --sidebar-primary: 43 72% 52%;
+    --sidebar-primary-foreground: 0 0% 4%;
+    --sidebar-accent: 0 0% 10%;
+    --sidebar-accent-foreground: 0 0% 95%;
+    --sidebar-border: 43 20% 14%;
+    --sidebar-ring: 43 72% 52%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', sans-serif;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif;
+  }
+}
+
+@layer components {
+  .premium-card {
+    @apply bg-card/80 backdrop-blur-xl border rounded-2xl;
+    border-color: rgba(212, 175, 55, 0.2);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+  }
+  .glass-card {
+    @apply bg-card/70 backdrop-blur-xl border border-border rounded-[14px];
+    box-shadow: 0 8px 32px hsla(0, 0%, 0%, 0.5), 0 0 0 1px hsla(43, 72%, 52%, 0.05);
+  }
+  .glass-card-hover {
+    @apply glass-card transition-all duration-300;
+  }
+  .glass-card-hover:hover {
+    border-color: hsl(43, 72%, 52%, 0.35);
+    box-shadow: 0 8px 40px hsla(43, 72%, 52%, 0.08), 0 0 0 1px hsla(43, 72%, 52%, 0.15);
+    transform: translateY(-2px);
+  }
+  .gold-text {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, hsl(43, 72%, 52%), hsl(43, 85%, 72%));
+  }
+  .gold-glow {
+    box-shadow: 0 0 30px hsla(43, 72%, 52%, 0.2), 0 0 60px hsla(43, 72%, 52%, 0.1);
+  }
+  .gold-border {
+    border: 1px solid rgba(212, 175, 55, 0.3);
+  }
+  .gold-gradient {
+    background: linear-gradient(135deg, #d4af37, #f5d76e);
+  }
+  .gold-btn {
+    background-image: linear-gradient(135deg, hsl(43, 60%, 46%), hsl(50, 100%, 50%));
+    @apply text-background font-semibold rounded-[14px] px-6 py-3 transition-all duration-300;
+  }
+  .gold-btn:hover {
+    box-shadow: 0 4px 24px hsla(43, 72%, 52%, 0.5);
+    transform: translateY(-1px);
+  }
+  .gold-btn-outline {
+    @apply border border-primary/40 text-primary font-semibold rounded-[14px] px-6 py-3 transition-all duration-300 bg-transparent;
+  }
+  .gold-btn-outline:hover {
+    @apply bg-primary/10;
+    box-shadow: 0 4px 20px hsla(43, 72%, 52%, 0.15);
+  }
+  .status-paid {
+    @apply bg-primary/15 text-primary border border-primary/30 px-3 py-1 rounded-full text-xs font-medium;
+  }
+  .status-pending {
+    @apply bg-muted text-muted-foreground border border-border px-3 py-1 rounded-full text-xs font-medium;
+  }
+  .status-overdue {
+    @apply bg-destructive/15 text-destructive border border-destructive/30 px-3 py-1 rounded-full text-xs font-medium;
+  }
+  .input {
+    @apply bg-input border border-border rounded-[12px] px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary/50 transition-colors;
+  }
+  .shimmer {
+    position: relative;
+    overflow: hidden;
+  }
+  .shimmer::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(212, 175, 55, 0.3),
+      transparent
+    );
+    background-size: 200% 100%;
+    animation: shimmer 2s infinite;
+  }
+  .font-display {
+    font-family: 'Playfair Display', serif;
+  }
+  .font-heading {
+    font-family: 'Space Grotesk', sans-serif;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}

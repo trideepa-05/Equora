@@ -1,0 +1,46 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function signedIn() {
+      return request.auth != null;
+    }
+
+    function isCurrentUser(userId) {
+      return signedIn() && request.auth.uid == userId;
+    }
+
+    // User profile documents keyed by Firebase Auth uid.
+    match /users/{userId} {
+      allow read: if signedIn();
+      allow create, update: if isCurrentUser(userId);
+      allow delete: if false;
+    }
+
+    // Shared app collections. Keep access auth-gated so the app works
+    // end-to-end while still blocking anonymous access.
+    match /groups/{groupId} {
+      allow read, create, update, delete: if signedIn();
+    }
+
+    match /expenses/{expenseId} {
+      allow read, create, update, delete: if signedIn();
+    }
+
+    match /bills/{billId} {
+      allow read, create, update, delete: if signedIn();
+    }
+
+    match /payments/{paymentId} {
+      allow read, create, update, delete: if signedIn();
+    }
+
+    match /settlements/{settlementId} {
+      allow read, create, update, delete: if signedIn();
+    }
+
+    // Deny everything else by default.
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
