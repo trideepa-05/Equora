@@ -1,0 +1,107 @@
+Equora — The Trust Layer for Group Payments
+
+Split bills. Verify payments. Eliminate “bro I already paid” forever.
+
+Equora is a high-speed, transparency-first settlement engine built for modern group payments.
+
+It combines:
+
+⚡ Instant bill splitting
+💸 UPI-powered payment flow
+🔗 Algorand on-chain verification
+📊 Proof-backed settlement tracking
+
+No spreadsheets. No confusion. No arguments.
+
+🧠 The Problem
+
+Group payments today are chaos:
+
+“I sent you bro” (no proof)
+Wrong splits and manual calculations
+Endless screenshots in WhatsApp
+No single source of truth
+
+Result?
+Time wasted. Trust broken. Settlements delayed.
+
+🚀 The Solution
+
+Equora replaces messy coordination with a structured + verifiable system:
+
+Every bill is calculated automatically
+Every payment has a status + proof
+Every group has a clear settlement state
+
+And most importantly:
+
+🔐 Payments can be verified on-chain using Algorand
+
+🔥 Core Features
+💳 Smart Bill Splitting
+Equal / Percentage / Custom splits
+Auto-generated participant shares
+Zero calculation errors
+📲 UPI Payment Flow (Frictionless UX)
+graph TD
+A[Create Bill] --> B[Split Among Members]
+B --> C[Generate Payment Requests]
+C --> D[Pay via UPI]
+D --> E[Mark Paid OR Verify via Algorand]
+E --> F[Update Status Board]
+F --> G[View Settlement Suggestions]
+G --> H[Ledger Stores Proof]
+Deep link → opens GPay / PhonePe instantly
+QR support for fast payments
+Manual fallback: “Mark as Paid”
+🔗 On-Chain Verification (Game Changer)
+Paste Algorand Tx ID
+Verify:
+Sender ✅
+Receiver ✅
+Amount ✅
+Supports:
+ALGO transfers
+ASA tokens (with opt-in checks)
+
+This is where Equora stops being “just another app” and becomes a trust engine
+
+📊 Settlement Engine
+Real-time-style progress: 3/5 paid
+Optimized “who pays whom” suggestions
+Minimizes number of transactions
+📜 Proof Ledger (Transparency Layer)
+Every verified payment stores:
+Tx ID
+Chain reference
+Asset ID (if ASA)
+Generates SHA256-based proof entries
+
+Think: “mini blockchain experience inside your app”
+
+👥 Groups & Profiles
+Group-based expense tracking
+Profile includes:
+UPI ID
+Algorand address
+Enables identity-linked verification
+🧩 How It Works (End-to-End Flow)
+🏗️ Tech Stack
+
+Frontend
+
+React + Vite
+Tailwind (Black + Gold premium UI)
+
+Backend
+
+Firebase (Auth + Firestore)
+
+Payments
+
+UPI Deep Linking
+
+Blockchain
+
+Algorand
+Indexer API for transaction verification
